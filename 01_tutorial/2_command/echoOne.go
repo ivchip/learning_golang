@@ -1,12 +1,14 @@
-// EchoOne prints its command-line arguments
+// EchoOne prints its 2_command-line arguments
 package main
 
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 func main()  {
+	start := time.Now()
 	var s, sep string
 	for i := 1; i < len(os.Args); i++ {
 		s += sep + os.Args[i]
@@ -14,4 +16,5 @@ func main()  {
 		fmt.Println("Argument:", i)
 	}
 	fmt.Println("Concatenates the values:", s)
+	fmt.Printf("%.8fs elapsed\n", time.Since(start).Seconds())
 }

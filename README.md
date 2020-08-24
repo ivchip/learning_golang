@@ -21,7 +21,7 @@ In Go:
 
 ### 1. Tutorial
 
-The classic "Hello" in Go.
+#### The classic "Hello" in Go.
 ```
 package main
 
@@ -48,7 +48,7 @@ $ ./hello
 Hello, 世界
 ```
 ***
-Receive arguments by command-line prompt.
+#### Receive arguments by command-line prompt.
 ```
 // EchoOne prints its command-line arguments
 package main
@@ -138,3 +138,4 @@ This prints.
 Learn Go now
 ```
 ***
+#### Finding duplicate lines
