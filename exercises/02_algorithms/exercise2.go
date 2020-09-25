@@ -27,15 +27,7 @@ func main()  {
 		12: "December",
 	}
 	fmt.Print("Month number: ")
-	number1 := getNumberInt()
-	fmt.Printf("The month is: %s\n", months[number1])
-}
-
-func getNumberInt() int  {
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
-	text := scanner.Text()
-	number, err := strconv.Atoi(text)
+	number, err := getNumberInt()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Not is a number: %v\n", err)
 		os.Exit(1)
@@ -44,5 +36,13 @@ func getNumberInt() int  {
 		fmt.Println("The number must be between 1 and 12.")
 		os.Exit(1)
 	}
-	return number
+	fmt.Printf("The month is: %s\n", months[number])
+}
+
+func getNumberInt() (int, error)  {
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	text := scanner.Text()
+	number, err := strconv.Atoi(text)
+	return number, err
 }

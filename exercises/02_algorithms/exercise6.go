@@ -14,22 +14,22 @@ import (
 func main()  {
 	var ages []int
 	fmt.Print("Age 1: ")
-	ages = append(ages, getValue())
+	age1, err1 := getValue()
+	validateNumber(err1)
+	ages = append(ages, age1)
 	fmt.Print("Age 2: ")
-	ages = append(ages, getValue())
+	age2, err2 := getValue()
+	validateNumber(err2)
+	ages = append(ages, age2)
 	fmt.Printf("The oldest person has: %d\n", majorAge(ages))
 }
 
-func getValue() int {
+func getValue() (int, error) {
 	scanner := bufio.NewScanner(os.Stdin)
 	scanner.Scan()
 	text := scanner.Text()
 	number, err := strconv.Atoi(text)
-	if err != nil {
-		fmt.Fprintf(os.Stderr,  "Not is a age: %v\n", err)
-		os.Exit(1)
-	}
-	return number
+	return number, err
 }
 
 func majorAge(array []int) int {
@@ -40,4 +40,11 @@ func majorAge(array []int) int {
 		}
 	}
 	return max
+}
+
+func validateNumber(err error)  {
+	if err != nil {
+		fmt.Fprintf(os.Stderr,  "Not is a age: %v\n", err)
+		os.Exit(1)
+	}
 }
